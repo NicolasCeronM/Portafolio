@@ -1,0 +1,54 @@
+---
+const navItems = [
+  { label: 'SOBRE MÍ', href: '#about' },
+  { label: 'TECNOLOGÍAS', href: '#technologies' },
+  { label: 'EXPERIENCIA', href: '#experience' },
+  { label: 'PROYECTOS', href: '#projects' },
+];
+---
+
+<nav class="nav hidden lg:block" aria-label="Navegación principal">
+  <ul class="mt-16 w-max">
+    {navItems.map((item) => (
+      <li>
+        <a class="nav-link group flex items-center py-3" href={item.href} data-section={item.href.slice(1)}>
+          <span class="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200 motion-reduce:transition-none"></span>
+          <span class="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200 group-focus-visible:text-slate-200">
+            {item.label}
+          </span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  function updateActiveNav() {
+    const scrollY = window.scrollY;
+    
+    sections.forEach(section => {
+      const sectionTop = (section as HTMLElement).offsetTop - 100;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute('id');
+      
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        navLinks.forEach(link => {
+          const linkSection = link.getAttribute('data-section');
+          if (linkSection === sectionId) {
+            link.querySelector('.nav-indicator')?.classList.add('!bg-slate-200', '!w-16');
+            link.querySelector('.nav-text')?.classList.add('!text-slate-200');
+          } else {
+            link.querySelector('.nav-indicator')?.classList.remove('!bg-slate-200', '!w-16');
+            link.querySelector('.nav-text')?.classList.remove('!text-slate-200');
+          }
+        });
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveNav);
+  updateActiveNav();
+</script>

@@ -1,0 +1,186 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Card from '../components/Card.astro';
+import astroIcon from '../assets/astro.svg';
+import reactIcon from '../assets/React.svg';
+import nextjsIcon from '../assets/Next.js.svg';
+import typescriptIcon from '../assets/TypeScript.svg';
+import tailwindIcon from '../assets/Tailwind CSS.svg';
+import javascriptIcon from '../assets/JavaScript.svg';
+import wordpressIcon from '../assets/WordPress.svg';
+import neonIcon from '../assets/Neon.svg';
+import nodeIcon from '../assets/Node.js.svg';
+import pythonIcon from '../assets/Python.svg';
+import djangoIcon from '../assets/Django.svg';
+import djangoRestIcon from '../assets/Django REST.svg';
+import mysqlIcon from '../assets/MySQL.svg';
+import postgresqlIcon from '../assets/PostgresSQL.svg';
+import dockerIcon from '../assets/Docker.svg';
+import bootstrapIcon from '../assets/Bootstrap.svg';
+import htmlIcon from '../assets/HTML5.svg';
+import cssIcon from '../assets/CSS3.svg';
+import postmanIcon from '../assets/Postman.svg';
+import { personalInfo, technologyCategories, experience, projects } from '../data/portfolio.js';
+
+const techIcons: Record<string, any> = {
+  "Astro": astroIcon,
+  "React": reactIcon,
+  "Next.js": nextjsIcon,
+  "TypeScript": typescriptIcon,
+  "Tailwind CSS": tailwindIcon,
+  "JavaScript": javascriptIcon,
+  "WordPress": wordpressIcon,
+  "Node.js": nodeIcon,
+  "Python": pythonIcon,
+  "Django": djangoIcon,
+  "DRF": djangoRestIcon,
+  "MySQL": mysqlIcon,
+  "PostgreSQL": postgresqlIcon,
+  "Neon": neonIcon,
+  "Docker": dockerIcon,
+  "Bootstrap": bootstrapIcon,
+  "HTML5": htmlIcon,
+  "CSS": cssIcon,
+  "Postman": postmanIcon,
+};
+---
+
+<Layout>
+  <div class="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0">
+    <div class="lg:flex lg:justify-between lg:gap-4">
+      <!-- COLUMNA IZQUIERDA -->
+      <header class="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
+        <div>
+          <h1 class="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
+            <a href="/">{personalInfo.name}</a>
+          </h1>
+          <h2 class="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
+            {personalInfo.title}
+          </h2>
+          <p class="mt-4 max-w-xs leading-normal">
+            Arquitecto de experiencias digitales de alto impacto, priorizando la velocidad, la fidelidad del diseño y la estabilidad técnica a largo plazo.
+          </p>
+
+          <a 
+            href={personalInfo.cv} 
+            target="_blank" 
+            rel="noreferrer"
+            class="mt-4 group flex items-center text-sm font-medium text-white hover:text-teal-300 transition-colors"
+          >
+            <span>Ver CV</span>
+            <svg class="ml-1 h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"></path></svg>
+            </svg>
+          </a>
+
+          <Nav />
+        </div>
+
+        <ul class="ml-1 mt-8 flex items-center" aria-label="Redes sociales">
+          {personalInfo.social.map((link) => (
+            <li class="mr-5 text-xs">
+              <a class="block hover:text-slate-200" href={link.url} target="_blank" rel="noreferrer" aria-label={link.name}>
+                {link.name === "GitHub" && (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="h-6 w-6" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                )}
+                {link.name === "LinkedIn" && (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.25 6.5 1.75 1.75 0 016.5 8.25zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.5c1.78 0 3.4 1.06 3.4 3.53z"></path></svg>
+                )}
+                {link.name === "Email" && (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6" aria-hidden="true"><path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a1.75 1.75 0 01-1.644 0L1.5 8.67zM22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a.25.25 0 00.235 0L22.5 6.908z"></path></svg>
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </header>
+
+      <!-- COLUMNA DERECHA -->
+      <main id="content" class="pt-24 lg:w-1/2 lg:py-24">
+        <!-- SOBRE MÍ -->
+        <section id="about" class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
+          <div class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+            <h2 class="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">Sobre mí</h2>
+          </div>
+          <div class="space-y-4">
+            {personalInfo.bio.map(paragraph => (
+              <p>{paragraph}</p>
+            ))}
+          </div>
+        </section>
+
+        <!-- TECNOLOGÍAS -->
+        <section id="technologies" class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
+          <div class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+            <h2 class="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">Tecnologías</h2>
+          </div>
+          <div class="space-y-8">
+            {Object.entries(technologyCategories).map(([category, techs]) => (
+              <div>
+                <h3 class="text-lg font-semibold text-slate-200 mb-3">{category}</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3">
+                  {techs.map((tech) => (
+                    <div class="flex items-center gap-2 rounded-lg bg-slate-800/50 px-3 py-2 transition-colors hover:bg-slate-800">
+                      {techIcons[tech.name] && (
+                        <img src={techIcons[tech.name].src} alt={tech.name} class="h-6 w-6" />
+                      )}
+                      <span class="text-sm font-medium text-slate-300 whitespace-nowrap">{tech.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- EXPERIENCIA -->
+        <section id="experience" class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
+          <div class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+            <h2 class="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">Experiencia</h2>
+          </div>
+          <ol class="group/list">
+            {experience.map(item => (
+              <li class="mb-12">
+                <Card 
+                  title={`${item.title} · ${item.company}`}
+                  subtitle={item.date}
+                  description={item.description}
+                  tags={item.technologies}
+                  url={item.companyUrl}
+                  isExperience
+                />
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <!-- PROYECTOS -->
+        <section id="projects" class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
+          <div class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+            <h2 class="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">Proyectos</h2>
+          </div>
+          <ul class="group/list">
+            {projects.map(project => (
+              <li class="mb-12">
+                <Card 
+                  image={project.image}
+                  title={project.title}
+                  description={project.description}
+                  tags={project.technologies}
+                  url={project.url}
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <footer class="max-w-md pb-16 text-sm text-slate-500 sm:pb-0">
+          <p>
+            Construido con <a href="https://astro.build/" class="font-medium text-slate-400 hover:text-teal-300 focus-visible:text-teal-300">Astro</a> y <a href="https://tailwindcss.com/" class="font-medium text-slate-400 hover:text-teal-300 focus-visible:text-teal-300">Tailwind CSS</a>.
+          </p>
+        </footer>
+      </main>
+    </div>
+  </div>
+</Layout>
