@@ -1,14 +1,70 @@
 ---
 import '../styles/global.css';
+
+const siteUrl = 'https://nicolasicm-portafolio.netlify.app';
+const title = 'Nicolás Cerón | Desarrollador Web Full-Stack';
+const description = 'Portafolio de Nicolás Cerón, Desarrollador Web Full-Stack especializado en Astro, React, Next.js y Django. Arquitecto de experiencias digitales de alto impacto.';
+const ogImage = `${siteUrl}/og-image.webp`;
+const author = 'Nicolás Cerón';
 ---
 <!doctype html>
 <html lang="es" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!-- Favicon -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+		<!-- Primary Meta -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="author" content={author} />
+		<meta name="keywords" content="desarrollador web, full-stack, frontend, backend, React, Next.js, Astro, Django, TypeScript, portafolio, Chile" />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href={siteUrl} />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={siteUrl} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Nicolás Cerón — Desarrollador Web Full-Stack" />
+		<meta property="og:site_name" content="Nicolás Cerón | Portafolio" />
+		<meta property="og:locale" content="es_CL" />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={siteUrl} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+		<meta name="twitter:image:alt" content="Nicolás Cerón — Desarrollador Web Full-Stack" />
+
+		<!-- Theme color (barra del navegador en móvil) -->
+		<meta name="theme-color" content="#0f172a" />
+
+		<!-- Structured Data: Person -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": "Nicolás Cerón",
+			"url": siteUrl,
+			"jobTitle": "Desarrollador Web Full-Stack",
+			"description": description,
+			"image": ogImage,
+			"sameAs": [
+				"https://github.com/NicolasCeronM",
+				"https://www.linkedin.com/in/nicolas-ceron-mulato/"
+			],
+			"knowsAbout": ["React", "Next.js", "Astro", "TypeScript", "Django", "Node.js", "Tailwind CSS"]
+		})} />
+
 		<meta name="generator" content={Astro.generator} />
-		<title>Nicolás Cerón | Desarrollador Web Full-Stack</title>
 	</head>
 	<body class="bg-slate-900 text-slate-400 font-sans leading-relaxed selection:bg-teal-300 selection:text-teal-900 antialiased">
     <!-- Spotlight Premium Effect -->
